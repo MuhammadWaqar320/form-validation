@@ -1,0 +1,30 @@
+@import './variables.scss';
+.main-form-class{
+  
+    display: flex;
+    background-color: $formClassBg;
+}
+.formCenter{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 460px;
+    align-items: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.formExtendClass{
+    width: 30%;
+}
+.formRigh{   
+       @extend .formExtendClass;
+}
+.formLeft{
+    @extend .formExtendClass
+}
+

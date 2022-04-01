@@ -1,0 +1,14 @@
+@import './variables';
+.input-field
+{
+    border: 1px solid $borderColor ;
+    border-radius: 5px;
+    padding: 10px;
+    width: 280px;
+    margin-bottom: 10px;
+}
+.label
+{
+  float: left;
+  margin-bottom: 3px;
+}

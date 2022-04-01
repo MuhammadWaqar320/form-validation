@@ -1,0 +1,82 @@
+@import './variables';
+@import './mixins';
+.container {
+  padding: 3% 4%;
+  border: 1px solid grey;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgb(51, 50, 50);
+  font-family: $FontFamily;
+}
+@media only screen and (max-width: 800px) {
+  .container {
+    padding: 5% 7%;
+  }
+}
+.form-class {
+  text-align: center;  
+}
+.logo-class {
+  height: 100px;
+  border: 1px solid rgb(179, 176, 176);
+  border-radius: 50%;
+  margin-bottom: 60px;
+}
+.header{
+
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-family: initial;
+    background: linear-gradient(to right, #cc0e0e 0%,#5b03c7 ,#4d5e97, #18c962 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  padding: "3px";
+}
+.inputFieldContainer{
+  display: $displayFlexVar;
+}
+.tooltipText {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  border-color: $border-color;
+  border-style: solid;
+  border-width: 0.01em;
+  background-color: white;
+  white-space: nowrap;
+  padding: 5px 8px;
+  font-size: 14px;
+  border-radius: 2px;
+  display: flex;
+  top: 97%;
+  z-index: 1;
+}
+.iconClass,.textClass
+{  
+  @include FlexMixin;
+
+}
+.iconClass{
+  color:orange
+}
+.textClass{
+  margin-bottom: 3px;
+  margin-left: 5px;
+}
+.tooltipText::before {
+  content: "";
+  border-left: $BorderTransparent;
+  border-right: $BorderTransparent;
+  border-bottom: 8px solid $bg-color;
+  position: absolute;
+  top: -28%;
+  left: 45%;
+}

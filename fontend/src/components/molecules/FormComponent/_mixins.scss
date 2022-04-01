@@ -1,0 +1,5 @@
+@mixin FlexMixin {
+  display: $displayFlexVar;
+  flex-direction: column;
+  justify-content: center;
+}
