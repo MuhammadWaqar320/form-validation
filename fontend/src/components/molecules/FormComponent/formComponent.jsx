@@ -67,8 +67,8 @@ const FormComponent = () => {
     };
     const isMatched_Email = email.localeCompare(reTypeEmail);
     const isMatched_Password = password.localeCompare(reTypePassword);
-    if (isMatched_Email === 0 && isMatched_Password === 0) {
-      await axios.post(endpoint, form_data).then((response) => {
+    // for backend
+  await axios.post(endpoint, form_data).then((response) => {
         setResponseData({
           __name: response.data.__name,
           __surname: response.data.__surname,
@@ -106,28 +106,70 @@ const FormComponent = () => {
         // window.alert("data inserted successfully");
         // navigate("/");
       });
-    } else {
-      if (isMatched_Email !== 0 && isMatched_Password !== 0) {
-        setIsEmailMatched(true);
-        setIsPassMatched(true);
-        setTimeout(() => {
-          setIsEmailMatched(false);
-          setIsPassMatched(false);
-        }, 3000);
-      }
-      if (isMatched_Password !== 0) {
-        setIsPassMatched(true);
-        setTimeout(() => {
-          setIsPassMatched(false);
-        }, 3000);
-      }
-      if (isMatched_Email !== 0) {
-        setIsEmailMatched(true);
-        setTimeout(() => {
-          setIsEmailMatched(false);
-        }, 3000);
-      }
-    }
+    // end for backend
+    // for frontend
+    // if (isMatched_Email === 0 && isMatched_Password === 0) {
+    //   await axios.post(endpoint, form_data).then((response) => {
+    //     setResponseData({
+    //       __name: response.data.__name,
+    //       __surname: response.data.__surname,
+    //       __email: response.data.__email,
+    //       __passport_no: response.data.__passport_no,
+    //       __password: response.data.__password,
+    //       __reTypePassword: response.data.__reTypePassword,
+    //       __reTypeEmail: response.data.__reTypeEmail,
+    //       __isPasswordMatched: response.data.__isPasswordMatched,
+    //       __isEmailMatched: response.data.__isEmailMatched,
+    //     });
+    //     setTimeout(() => {
+    //       setResponseData({
+    //         __name: "",
+    //         __surname: "",
+    //         __email: "",
+    //         __passport_no: "",
+    //         __password: "",
+    //         __reTypePassword: "",
+    //         __reTypeEmail: "",
+    //         __isPasswordMatched: "",
+    //         __isEmailMatched: "",
+    //       });
+    //     }, 3000);
+    //     if(response.data.message==="inserted"){
+    //       swal({
+    //         title: "Congratulation!",
+    //         text: "You have registered successfully",
+    //         icon: "success",
+    //         button: "OK",
+    //       });
+    //     }
+     
+
+    //     // window.alert("data inserted successfully");
+    //     // navigate("/");
+    //   });
+    // } else {
+    //   if (isMatched_Email !== 0 && isMatched_Password !== 0) {
+    //     setIsEmailMatched(true);
+    //     setIsPassMatched(true);
+    //     setTimeout(() => {
+    //       setIsEmailMatched(false);
+    //       setIsPassMatched(false);
+    //     }, 3000);
+    //   }
+    //   if (isMatched_Password !== 0) {
+    //     setIsPassMatched(true);
+    //     setTimeout(() => {
+    //       setIsPassMatched(false);
+    //     }, 3000);
+    //   }
+    //   if (isMatched_Email !== 0) {
+    //     setIsEmailMatched(true);
+    //     setTimeout(() => {
+    //       setIsEmailMatched(false);
+    //     }, 3000);
+    //   }
+    // }
+    // end for frontend
   };
 
   return (
@@ -144,11 +186,10 @@ const FormComponent = () => {
             type="text"
             value={name}
             placeholder="Enter your name"
-            regex="[a-zA-Z][0-9\ w \[\]`!@#$%\^&*()={}:;<>+.']*"
+            regex="^[a-zA-Z][A-Za-z0-9_@./#&+-]{3,15}$"
             maxLength="15"
             minLength="5"
             id="name"
-      
             onchange={(e) => {
               setName(e.target.value);
             }}
@@ -173,9 +214,9 @@ const FormComponent = () => {
             placeholder="Enter surname"
             onchange={(e) => setSurname(e.target.value)}
             label="Surname"
-            regex="[a-zA-Z][0-9\ w \[\]`!@#$%\^&*()={}:;<>+.'-/]*"
-            maxLength="15"
             id="surname"
+            regex="^[a-zA-Z][A-Za-z0-9_@./#&+-]{3,15}$"
+            maxLength="15"
             minLength="5"
             onchange={(e) => {
               setSurname(e.target.value);
@@ -198,8 +239,8 @@ const FormComponent = () => {
           <Input
             type="text"
             value={email}
-            placeholder="Enter your email"
             id="email"
+            placeholder="Enter your email"
             onchange={(e) => setEmail(e.target.value)}
             regex="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
             title="Please include an @ or . in email address"
@@ -268,7 +309,6 @@ const FormComponent = () => {
           <Input
             type="password"
             value={password}
-            id="password"
             placeholder="Enter your password"
             onchange={(e) => setPassword(e.target.value)}
             regex="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{4,}$"

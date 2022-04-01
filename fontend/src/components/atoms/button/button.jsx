@@ -1,9 +1,9 @@
 import React from 'react'
 import './button.scss'
-const Buttons = ({label,type,Class,icon}) => {
+const Buttons = ({label,type,Class,id}) => {
   return (
     <div>
-        <button type={type} className={Class} >{label}</button>
+        <button type={type} className={Class} id={id} >{label}</button>
     </div>
   )
 }
